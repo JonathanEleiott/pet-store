@@ -13,6 +13,18 @@ const createOwner = async(name) => {
   }
 }
 
+const getOwners = async() => {
+  try {
+    const { rows } = await client.query(`
+      SELECT * FROM owners;
+    `);
+    return rows;
+  } catch(err) {
+    console.log(err);
+  }
+}
+
 module.exports = {
-  createOwner
+  createOwner,
+  getOwners
 }
